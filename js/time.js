@@ -1,4 +1,4 @@
-/*global window, document, tizen, setTimeout */
+/*global window, document, tizen, setTimeout, $ */
 /*jslint plusplus: true*/
 
 var five, ten, quarter, twenty, half,  to, past, 
@@ -158,7 +158,7 @@ function watch() {
 window.onload = function () {
     'use strict';
 
-    window.addEventListener('touchend', function (e) {
+    window.addEventListener('touchend', function () {
         window.location.href="date.html";
     },false);
     

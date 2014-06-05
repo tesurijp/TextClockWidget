@@ -1,4 +1,4 @@
-/*global window, document, tizen, setTimeout */
+/*global window, document, tizen, setTimeout,$ */
 /*jslint plusplus: true*/
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
@@ -11,14 +11,14 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
         window.setTimeout(callback, 1000 / 60);
     };
     
-function date() {
+function calendar() {
     'use strict';
 
     //Import the current time
     //noinspection JSUnusedAssignment
     var date = new Date(),
         day = date.getDate(),
-        month = date.getMonth()
+        month = date.getMonth();
     
     switch(day){
     case 1:
@@ -112,9 +112,9 @@ function date() {
 window.onload = function () {
     'use strict';
 
-    window.addEventListener('touchend', function (e) {
+    window.addEventListener('touchend', function() {
         window.location.href="time.html";
     },false);
 
-    window.requestAnimationFrame(date);
+    window.requestAnimationFrame(calendar);
 };
