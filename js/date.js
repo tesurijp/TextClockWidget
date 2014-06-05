@@ -107,6 +107,9 @@ function calendar() {
         	$(".dec").css("color","#fff");break;
     }
 
+    setTimeout(function () {
+        window.location.href="time.html";
+    }, 3000);
 }
 
 window.onload = function () {
