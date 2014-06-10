@@ -158,8 +158,8 @@ function watch() {
 window.onload = function () {
     'use strict';
 
-    window.addEventListener('touchend', function () {
-        window.location.href="date.html";
+    window.addEventListener('touchstart', function (e) {
+     		window.location.href="date.html";
     },false);
     
     five = $(".five");

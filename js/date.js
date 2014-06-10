@@ -115,7 +115,7 @@ function calendar() {
 window.onload = function () {
     'use strict';
 
-    window.addEventListener('touchend', function() {
+    window.addEventListener('touchstart', function() {
         window.location.href="time.html";
     },false);
 
