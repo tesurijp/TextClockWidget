@@ -1,5 +1,7 @@
-/*global window, document, tizen, setTimeout,$ */
+/*global window, document, tizen, setTimeout,$,localStorage */
 /*jslint plusplus: true*/
+
+var fgColor, bgColor;
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -20,91 +22,93 @@ function calendar() {
         day = date.getDate(),
         month = date.getMonth();
     
+    $(".datetable *").css("color",bgColor);
+    
     switch(day){
     case 1:
     case 21:
     case 31:
-        $(".d01").css("color","#fff");break;
+        $(".d01").css("color",fgColor);break;
     case 2:
     case 22:
-        $(".d02").css("color","#fff");break;
+        $(".d02").css("color",fgColor);break;
     case 3:
     case 23:
-        $(".d03").css("color","#fff");break;
+        $(".d03").css("color",fgColor);break;
     case 4:
     case 24:
-        $(".d04").css("color","#fff");break;
+        $(".d04").css("color",fgColor);break;
     case 5:
     case 25:
-        $(".d05").css("color","#fff");break;
+        $(".d05").css("color",fgColor);break;
     case 6:
     case 26:
-        $(".d06").css("color","#fff");break;
+        $(".d06").css("color",fgColor);break;
     case 7:
     case 27:
-        $(".d07").css("color","#fff");break;
+        $(".d07").css("color",fgColor);break;
     case 8:
     case 28:
-        $(".d08").css("color","#fff");break;
+        $(".d08").css("color",fgColor);break;
     case 9:
     case 29:
-        $(".d09").css("color","#fff");break;
+        $(".d09").css("color",fgColor);break;
     case 10:
-        $(".d10").css("color","#fff");break;
+        $(".d10").css("color",fgColor);break;
     case 11:
-        $(".d11").css("color","#fff");break;
+        $(".d11").css("color",fgColor);break;
     case 12:
-        $(".d12").css("color","#fff");break;
+        $(".d12").css("color",fgColor);break;
     case 13:
-        $(".d13").css("color","#fff");break;
+        $(".d13").css("color",fgColor);break;
     case 14:
-        $(".d14").css("color","#fff");break;
+        $(".d14").css("color",fgColor);break;
     case 15:
-        $(".d15").css("color","#fff");break;
+        $(".d15").css("color",fgColor);break;
     case 16:
-        $(".d16").css("color","#fff");break;
+        $(".d16").css("color",fgColor);break;
     case 17:
-        $(".d17").css("color","#fff");break;
+        $(".d17").css("color",fgColor);break;
     case 18:
-        $(".d18").css("color","#fff");break;
+        $(".d18").css("color",fgColor);break;
     case 19:
-        $(".d19").css("color","#fff");break;
+        $(".d19").css("color",fgColor);break;
     case 20:
-        $(".d20").css("color","#fff");break;
+        $(".d20").css("color",fgColor);break;
     case 30:
-        $(".d20").css("color","#fff");break;
+        $(".d20").css("color",fgColor);break;
     }
     if(day===31){
-    	$(".d3x").css("color","#fff");
+    	$(".d3x").css("color",fgColor);
     }else if(day>20 && day <30){
-    	$(".d2x").css("color","#fff");
+    	$(".d2x").css("color",fgColor);
     }
 
     switch(month){
         case 0:
-            $(".jan").css("color","#fff");break;
+            $(".jan").css("color",fgColor);break;
         case 1:
-        	$(".feb").css("color","#fff");break;
+        	$(".feb").css("color",fgColor);break;
         case 2:
-        	$(".mar").css("color","#fff");break;
+        	$(".mar").css("color",fgColor);break;
         case 3:
-        	$(".apr").css("color","#fff");break;
+        	$(".apr").css("color",fgColor);break;
         case 4:
-        	$(".may").css("color","#fff");break;
+        	$(".may").css("color",fgColor);break;
         case 5:
-        	$(".jun").css("color","#fff");break;
+        	$(".jun").css("color",fgColor);break;
         case 6:
-        	$(".jul").css("color","#fff");break;
+        	$(".jul").css("color",fgColor);break;
         case 7:
-        	$(".aug").css("color","#fff");break;
+        	$(".aug").css("color",fgColor);break;
         case 8:
-        	$(".sep").css("color","#fff");break;
+        	$(".sep").css("color",fgColor);break;
         case 9:
-        	$(".oct").css("color","#fff");break;
+        	$(".oct").css("color",fgColor);break;
         case 10:
-        	$(".nov").css("color","#fff");break;
+        	$(".nov").css("color",fgColor);break;
         case 11:
-        	$(".dec").css("color","#fff");break;
+        	$(".dec").css("color",fgColor);break;
     }
 
     setTimeout(function () {
@@ -115,9 +119,26 @@ function calendar() {
 window.onload = function () {
     'use strict';
 
-    window.addEventListener('touchstart', function() {
-        window.location.href="time.html";
-    },false);
+    var multiTouch;
+    $(".contents").on('touchstart', function(e) {
+    	multiTouch = !(e.originalEvent.touches.length < 2);
+    });
+    $(".contents").on('touchend', function() {
+    	if(multiTouch){
+    		window.location.href="settings.html";
+    	} else {
+    		window.location.href="time.html";
+    	}
+    });
+    
+    fgColor = localStorage.getItem("fgColor");
+    if(fgColor === null){
+    	fgColor = "#fff";
+    }
+    bgColor = localStorage.getItem("bgColor");
+    if(fgColor === null){
+    	fgColor = "#444";
+    }
 
     window.requestAnimationFrame(calendar);
 };

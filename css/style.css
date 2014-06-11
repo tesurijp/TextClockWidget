@@ -9,7 +9,7 @@
     height: 320px;
     font-size: 1.2em;
     background: rgba(2,2,2,0.2);
-    color: #444;
+    /* color: #444; */
     text-align: center;
 }
 .datetable {
@@ -19,13 +19,7 @@
     height: 320px;
     font-size: 1em;
     background: rgba(2,2,2,0.2);
-    color: #444;
+    /* color: #444; */
     text-align: center;
 }
 
-#contents table.styler td {
-    font-family: monospace;
-}
-.itis {
-	color:#fff;
-}

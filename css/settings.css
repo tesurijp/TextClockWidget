@@ -1,0 +1,85 @@
+*{
+    margin : 0;
+    padding : 0;
+    display:inline-block
+}
+
+.apply {
+	margin: 0px;
+    width: 320px;
+    height: 40px;
+    font-size : 2em;
+    text-align : center;
+    background-color:#888
+}
+
+.cfff{
+	background-color:#fff;
+
+}
+.cff0{
+	background-color:#ff0;
+
+}
+.cf0f{
+	background-color:#f0f;
+
+}
+.cf00{
+	background-color:#f00
+}
+.c0ff{
+	background-color:#0ff
+}
+.c0f0{
+	background-color:#0f0
+}
+.c00f{
+	background-color:#00f
+}
+.c888{
+	background-color:#888
+}
+.c880{
+	background-color:#880
+}
+.c808{
+	background-color:#808
+}
+.c800{
+	background-color:#800
+}
+.c088{
+	background-color:#088
+}
+.c080{
+	background-color:#080
+}
+.c008{
+	background-color:#008
+}
+
+.c444{
+	background-color:#444
+}
+.c440{
+	background-color:#440
+}
+.c404{
+	background-color:#404
+}
+.c400{
+	background-color:#400
+}
+.c044{
+	background-color:#044
+}
+.c040{
+	background-color:#040
+}
+.c004{
+	background-color:#004
+}
+.c000{
+	background-color:#000
+}
