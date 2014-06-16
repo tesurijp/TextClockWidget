@@ -25,10 +25,10 @@ function watch() {
         hours = date.getHours(),
         minutes = date.getMinutes(),
         nextMove = 1000 - date.getMilliseconds();
-    
-	$(".timetable *").css("color",bgColor);
-	$(".itis").css("color",fgColor);
-    
+
+    $(".timetable *").css("color",bgColor);
+    $(".itis").css("color",fgColor);
+
     switch(true){
     case (minutes > 57 ):
         oclock.css("color",fgColor);
@@ -137,15 +137,15 @@ window.onload = function () {
 
     var multiTouch;
     $(".contents").on('touchstart', function(e) {
-    	multiTouch = !(e.originalEvent.touches.length < 2);
+        multiTouch = !(e.originalEvent.touches.length < 2);
     });
 
     $(".contents").on('touchend', function() {
-    	if(multiTouch){
-    		window.location.href="settings.html";
-    	} else {
-    		window.location.href="date.html";
-    	}
+        if(multiTouch){
+            window.location.href="settings.html";
+        } else {
+            window.location.href="date.html";
+        }
     });
 
     five = $(".five");
@@ -174,13 +174,12 @@ window.onload = function () {
 
     fgColor = localStorage.getItem("fgColor");
     if(fgColor === null){
-    	fgColor = "#fff";
+        fgColor = "#fff";
     }
     bgColor = localStorage.getItem("bgColor");
-    if(fgColor === null){
-    	fgColor = "#444";
+    if(bgColor === null){
+        bgColor = "#444";
     }
-    
-    
+
     window.requestAnimationFrame(watch);
 };

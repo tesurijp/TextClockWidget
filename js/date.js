@@ -12,7 +12,7 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
         'use strict';
         window.setTimeout(callback, 1000 / 60);
     };
-    
+
 function calendar() {
     'use strict';
 
@@ -21,9 +21,9 @@ function calendar() {
     var date = new Date(),
         day = date.getDate(),
         month = date.getMonth();
-    
+
     $(".datetable *").css("color",bgColor);
-    
+
     switch(day){
     case 1:
     case 21:
@@ -79,36 +79,36 @@ function calendar() {
         $(".d20").css("color",fgColor);break;
     }
     if(day===31){
-    	$(".d3x").css("color",fgColor);
+        $(".d3x").css("color",fgColor);
     }else if(day>20 && day <30){
-    	$(".d2x").css("color",fgColor);
+        $(".d2x").css("color",fgColor);
     }
 
     switch(month){
         case 0:
             $(".jan").css("color",fgColor);break;
         case 1:
-        	$(".feb").css("color",fgColor);break;
+            $(".feb").css("color",fgColor);break;
         case 2:
-        	$(".mar").css("color",fgColor);break;
+            $(".mar").css("color",fgColor);break;
         case 3:
-        	$(".apr").css("color",fgColor);break;
+            $(".apr").css("color",fgColor);break;
         case 4:
-        	$(".may").css("color",fgColor);break;
+            $(".may").css("color",fgColor);break;
         case 5:
-        	$(".jun").css("color",fgColor);break;
+            $(".jun").css("color",fgColor);break;
         case 6:
-        	$(".jul").css("color",fgColor);break;
+            $(".jul").css("color",fgColor);break;
         case 7:
-        	$(".aug").css("color",fgColor);break;
+            $(".aug").css("color",fgColor);break;
         case 8:
-        	$(".sep").css("color",fgColor);break;
+            $(".sep").css("color",fgColor);break;
         case 9:
-        	$(".oct").css("color",fgColor);break;
+            $(".oct").css("color",fgColor);break;
         case 10:
-        	$(".nov").css("color",fgColor);break;
+            $(".nov").css("color",fgColor);break;
         case 11:
-        	$(".dec").css("color",fgColor);break;
+            $(".dec").css("color",fgColor);break;
     }
 
     setTimeout(function () {
@@ -121,23 +121,23 @@ window.onload = function () {
 
     var multiTouch;
     $(".contents").on('touchstart', function(e) {
-    	multiTouch = !(e.originalEvent.touches.length < 2);
+        multiTouch = !(e.originalEvent.touches.length < 2);
     });
     $(".contents").on('touchend', function() {
-    	if(multiTouch){
-    		window.location.href="settings.html";
-    	} else {
-    		window.history.back();
-    	}
+        if(multiTouch){
+            window.location.href="settings.html";
+        } else {
+            window.history.back();
+        }
     });
-    
+
     fgColor = localStorage.getItem("fgColor");
     if(fgColor === null){
-    	fgColor = "#fff";
+        fgColor = "#fff";
     }
     bgColor = localStorage.getItem("bgColor");
-    if(fgColor === null){
-    	fgColor = "#444";
+    if(bgColor === null){
+        bgColor = "#444";
     }
 
     window.requestAnimationFrame(calendar);
