@@ -44,11 +44,11 @@ window.onload = function () {
     $(".backtransparencyselection *").css("width","40px");
     $(".backtransparencyselection *").css("height","40px");
 
-    $(".highlightselection").show();
-    $(".backtextselection").show();
-    $(".backgroundselection").show();
-    $(".backtransparencyselection").show();
-
+    $(".highlightselection").hide();
+    $(".backtextselection").hide();
+    $(".backgroundselection").hide();
+    $(".backtransparencyselection").hide();
+    
     $(".highlightcolor").css("color",fgColor);
     $(".highlightcolor").css("font-size","2em");
     $(".highlightcolor").on('touchend', function() {
@@ -84,6 +84,7 @@ window.onload = function () {
         $(".backgroundselection").hide();
         $(".backtransparencyselection").show();
     });
+    $(".backtransparencyselection *").css("background-color",backColor);
     
 
     $(".highlightselection *").click(function(){
@@ -96,11 +97,36 @@ window.onload = function () {
         $(".backtextcolor").css("color",bgColor);
         $(".backtextselection").hide();
     });
+    $(".backgroundselection *").click( function(){
+        backColor = $(this).css("background-color");
+        $(".backgroundcolor").css("color",backColor);
+        $(".backgroundtransparency").css("color",backColor);
+        $(".backtransparencyselection *").css("background-color",backColor);
+        $(".backgroundselection").hide();
+    });
+    $(".backtransparencyselection *").click( function(){
+        backTrans = $(this).css("opacity");
+        $(".backtransparencyselection").hide();
+    });
 
 
     $(".apply").on('touchend',  function() {
+    	var color, r,g,b;
+    	
         localStorage.setItem("fgColor",fgColor);
         localStorage.setItem("bgColor",bgColor);
-        window.history.back();
+        localStorage.setItem("backColor",backColor);
+        localStorage.setItem("backTrans",backTrans);
+
+        color = backColor.toString().replace('rgb(','');
+        color = color.replace(')','');
+        color = color.split(",");
+        r = color[0];
+        g = color[1];
+        b = color[2];
+        console.log("rgba("+r+","+g+","+b+","+backTrans+")");
+        
+        localStorage.setItem("backColorTrans","rgba("+r+","+g+","+b+","+backTrans+")");
+        window.location.href="time.html";
     });
  };

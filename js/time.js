@@ -3,7 +3,7 @@
 
 var five, ten, quarter, twenty, half,  to, past, 
     t1, t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,
-    am, pm, oclock,fgColor, bgColor;
+    am, pm, oclock,fgColor, bgColor, backColorTrans;
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -28,6 +28,7 @@ function watch() {
 
     $(".timetable *").css("color",bgColor);
     $(".itis").css("color",fgColor);
+    $(".timetable").css("background",backColorTrans);
 
     switch(true){
     case (minutes > 57 ):
@@ -180,6 +181,12 @@ window.onload = function () {
     if(bgColor === null){
         bgColor = "#444";
     }
+
+    backColorTrans = localStorage.getItem("backColorTrans");
+    if(backColorTrans === null){
+        backColorTrans = "rgba(4,4,4,0.2)";
+    }
+
 
     window.requestAnimationFrame(watch);
 };

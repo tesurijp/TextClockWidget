@@ -1,7 +1,7 @@
 /*global window, document, tizen, setTimeout,$,localStorage */
 /*jslint plusplus: true*/
 
-var fgColor, bgColor;
+var fgColor, bgColor, backColorTrans;
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -23,6 +23,7 @@ function calendar() {
         month = date.getMonth();
 
     $(".datetable *").css("color",bgColor);
+    $(".datetable").css("background",backColorTrans);
 
     switch(day){
     case 1:
@@ -76,7 +77,7 @@ function calendar() {
     case 20:
         $(".d20").css("color",fgColor);break;
     case 30:
-        $(".d20").css("color",fgColor);break;
+        $(".d30").css("color",fgColor);break;
     }
     if(day===31){
         $(".d3x").css("color",fgColor);
@@ -112,7 +113,7 @@ function calendar() {
     }
 
     setTimeout(function () {
-        window.history.back();
+        window.location.href="time.html";
     }, 3000);
 }
 
@@ -127,7 +128,7 @@ window.onload = function () {
         if(multiTouch){
             window.location.href="settings.html";
         } else {
-            window.history.back();
+            window.location.href="time.html";
         }
     });
 
@@ -138,6 +139,10 @@ window.onload = function () {
     bgColor = localStorage.getItem("bgColor");
     if(bgColor === null){
         bgColor = "#444";
+    }
+    backColorTrans = localStorage.getItem("backColorTrans");
+    if(backColorTrans === null){
+        backColorTrans = "rgba(4,4,4,0.2)";
     }
 
     window.requestAnimationFrame(calendar);
