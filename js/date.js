@@ -112,7 +112,7 @@ function calendar() {
     }
 
     setTimeout(function () {
-        window.location.href="time.html";
+        window.history.back();
     }, 3000);
 }
 
@@ -127,7 +127,7 @@ window.onload = function () {
     	if(multiTouch){
     		window.location.href="settings.html";
     	} else {
-    		window.location.href="time.html";
+    		window.history.back();
     	}
     });
     

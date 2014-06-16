@@ -64,7 +64,7 @@ window.onload = function () {
     $(".apply").on('touchend',  function() {
     	localStorage.setItem("fgColor",fgColor);
     	localStorage.setItem("bgColor",bgColor);
-    	window.location.href="time.html";
+    	window.history.back();
     });
     
     
