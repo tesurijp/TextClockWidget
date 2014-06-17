@@ -145,7 +145,7 @@ window.onload = function () {
         if(multiTouch){
             window.location.href="settings.html";
         } else {
-            window.location.href="settings.html";
+            window.location.href="date.html";
         }
     });
 
