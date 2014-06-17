@@ -145,7 +145,7 @@ window.onload = function () {
         if(multiTouch){
             window.location.href="settings.html";
         } else {
-            window.location.href="date.html";
+            window.location.href="settings.html";
         }
     });
 
@@ -186,7 +186,6 @@ window.onload = function () {
     if(backColorTrans === null){
         backColorTrans = "rgba(4,4,4,0.2)";
     }
-
 
     window.requestAnimationFrame(watch);
 };

@@ -3,7 +3,6 @@
 
 var fgColor, bgColor, backColor, backTrans;
 
-
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame ||
@@ -14,7 +13,6 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
         window.setTimeout(callback, 1000 / 60);
     };
 
-    
 window.onload = function () {
     'use strict';
 
@@ -111,22 +109,17 @@ window.onload = function () {
 
 
     $(".apply").on('touchend',  function() {
-    	var color, r,g,b;
-    	
+        var color;
         localStorage.setItem("fgColor",fgColor);
         localStorage.setItem("bgColor",bgColor);
         localStorage.setItem("backColor",backColor);
         localStorage.setItem("backTrans",backTrans);
 
-        color = backColor.toString().replace('rgb(','');
-        color = color.replace(')','');
-        color = color.split(",");
-        r = color[0];
-        g = color[1];
-        b = color[2];
-        console.log("rgba("+r+","+g+","+b+","+backTrans+")");
-        
-        localStorage.setItem("backColorTrans","rgba("+r+","+g+","+b+","+backTrans+")");
+        color = backColor.toString().replace("rgb","");
+        color = color.replace(")",",");
+        color = "rgba" + color + backTrans +")";
+
+        localStorage.setItem("backColorTrans",color);
         window.location.href="time.html";
     });
  };
