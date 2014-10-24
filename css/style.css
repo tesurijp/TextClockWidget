@@ -5,8 +5,8 @@
 .timetable {
     position: absolute;
     margin: 0px;
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 480px;
     font-size: 1.2em;
     /* background: rgba(2,2,2,0.2); */
     /* color: #444; */
@@ -15,8 +15,8 @@
 .datetable {
     position: absolute;
     margin: 0px;
-    width: 320px;
-    height: 320px;
+    width: 360px;
+    height: 480px;
     font-size: 1em;
     /* background: rgba(2,2,2,0.2);*/
     /* color: #444; */

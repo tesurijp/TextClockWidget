@@ -33,14 +33,14 @@ window.onload = function () {
         backTrans = "0.2";
     }
 
-    $(".highlightselection *").css("width","40px");
-    $(".highlightselection *").css("height","40px");
-    $(".backtextselection *").css("width","40px");
-    $(".backtextselection *").css("height","40px");
-    $(".backgroundselection *").css("width","40px");
-    $(".backgroundselection *").css("height","40px");
-    $(".backtransparencyselection *").css("width","40px");
-    $(".backtransparencyselection *").css("height","40px");
+    $(".highlightselection *").css("width","45px");
+    $(".highlightselection *").css("height","45px");
+    $(".backtextselection *").css("width","45px");
+    $(".backtextselection *").css("height","45px");
+    $(".backgroundselection *").css("width","45px");
+    $(".backgroundselection *").css("height","45px");
+    $(".backtransparencyselection *").css("width","45px");
+    $(".backtransparencyselection *").css("height","45px");
 
     $(".highlightselection").hide();
     $(".backtextselection").hide();
