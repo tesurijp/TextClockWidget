@@ -3,7 +3,7 @@
 
 var five, ten, quarter, twenty, half,  to, past, 
     t1, t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,
-    am, pm, oclock,fgColor, bgColor, backColorTrans;
+    am, pm, oclock,fgColor, bgColor, backColorTrans,alwaysOn;
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -14,7 +14,6 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
         'use strict';
         window.setTimeout(callback, 1000 / 60);
     };
-
 
 function watch() {
     'use strict';
@@ -133,6 +132,23 @@ function watch() {
     }, nextMove);
 }
 
+function loadColor(){
+    fgColor = localStorage.getItem("fgColor");
+    if(fgColor === null){
+        fgColor = "#fff";
+    }
+    bgColor = localStorage.getItem("bgColor");
+    if(bgColor === null){
+        bgColor = "#444";
+    }
+    
+    $(".timetable").css("background","rgba(0,0,0,0)");
+    backColorTrans = localStorage.getItem("backColorTrans");
+    if(backColorTrans === null){
+        backColorTrans = "rgba(4,4,4,0.2)";
+    }
+}
+
 window.onload = function () {
     'use strict';
 
@@ -148,7 +164,53 @@ window.onload = function () {
             window.location.href="date.html";
         }
     });
+    
+    alwaysOn = localStorage.getItem("alwaysOn");
+    
+    document.addEventListener("visibilitychange", function() {
+        if(alwaysOn === 'true'){
+            if (document.hidden) {
+                fgColor = '#FFF';
+                bgColor = '#000';
+                backColorTrans = 'rgba(0,0,0,1)';
+                tizen.power.request("SCREEN", "SCREEN_DIM");
+            } else  {
+                loadColor();
+                window.requestAnimationFrame(watch);
+            }
+        }
+    }, false);   
 
+    tizen.power.setScreenStateChangeListener(
+        function(previousState, changedState) {
+            if(alwaysOn ==='true'){
+                var currentDeviceMode = changedState;
+                switch(currentDeviceMode){
+                case 'SCREEN_OFF':
+                    fgColor = '#FFF';
+                    bgColor = '#000';
+                    backColorTrans = 'rgba(0,0,0,1)';
+                    break;
+                case 'SCREEN_DIM':
+                    fgColor = '#FFF';
+                    bgColor = '#000';
+                    backColorTrans = 'rgba(0,0,0,1)';
+                    break;
+                case 'SCREEN_NORMAL':
+                    loadColor();
+                    window.requestAnimationFrame(watch);
+                    break;
+                case 'SCREEN_BRIGHT':
+                    loadColor();
+                    window.requestAnimationFrame(watch);
+                    break;
+                }
+            } else {
+                loadColor();                
+            }
+        }
+    );
+    
     five = $(".five");
     ten = $(".ten");
     quarter= $(".quarter");
@@ -173,19 +235,7 @@ window.onload = function () {
     pm= $(".pm");
     oclock = $(".oclock");
 
-    fgColor = localStorage.getItem("fgColor");
-    if(fgColor === null){
-        fgColor = "#fff";
-    }
-    bgColor = localStorage.getItem("bgColor");
-    if(bgColor === null){
-        bgColor = "#444";
-    }
-
-    backColorTrans = localStorage.getItem("backColorTrans");
-    if(backColorTrans === null){
-        backColorTrans = "rgba(4,4,4,0.2)";
-    }
+    loadColor();
 
     window.requestAnimationFrame(watch);
 };

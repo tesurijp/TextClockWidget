@@ -1,7 +1,7 @@
 /*global window, document, tizen, setTimeout,$ ,localStorage */
 /*jslint plusplus: true*/
 
-var fgColor, bgColor, backColor, backTrans;
+var fgColor, bgColor, backColor, backTrans,alwaysOn;
 
 window.requestAnimationFrame = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -32,7 +32,18 @@ window.onload = function () {
     if(backTrans === null){
         backTrans = "0.2";
     }
+    alwaysOn = localStorage.getItem("alwaysOn");
+    if(alwaysOn === null){
+        alwaysOn = false;
+    }
+    if(alwaysOn==='true'){
+        $("#checkalwayson").prop("checked",true);
+    }else{
+        $("#checkalwayson").prop("checked",false);
+    }
 
+    $(".alwayson").css("font-size","2em");
+    
     $(".highlightselection *").css("width","45px");
     $(".highlightselection *").css("height","45px");
     $(".backtextselection *").css("width","45px");
@@ -114,6 +125,7 @@ window.onload = function () {
         localStorage.setItem("bgColor",bgColor);
         localStorage.setItem("backColor",backColor);
         localStorage.setItem("backTrans",backTrans);
+        localStorage.setItem("alwaysOn",$("#checkalwayson").prop('checked'));
 
         color = backColor.toString().replace("rgb","");
         color = color.replace(")",",");
@@ -122,4 +134,7 @@ window.onload = function () {
         localStorage.setItem("backColorTrans",color);
         window.location.href="time.html";
     });
+    
+
+    
  };
