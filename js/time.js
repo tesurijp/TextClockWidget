@@ -12,7 +12,7 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
     window.msRequestAnimationFrame ||
     function (callback) {
         'use strict';
-        window.setTimeout(callback, 1000 / 60);
+        window.setTimeout(callback, 1000);
     };
 
 function watch() {
@@ -23,7 +23,6 @@ function watch() {
     var date = new Date(),
         hours = date.getHours(),
         minutes = date.getMinutes(),
-        nextMove = 1000 - date.getMilliseconds();
 
     $(".timetable *").css("color",bgColor);
     $(".itis").css("color",fgColor);
@@ -126,10 +125,6 @@ function watch() {
         case 11:
             t11.css("color",fgColor);break;
     }
-
-    setTimeout(function () {
-        window.requestAnimationFrame(watch);
-    }, nextMove);
 }
 
 function loadColor(){

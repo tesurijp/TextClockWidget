@@ -3,16 +3,6 @@
 
 var fgColor, bgColor, backColor, backTrans,alwaysOn;
 
-window.requestAnimationFrame = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-        'use strict';
-        window.setTimeout(callback, 1000 / 60);
-    };
-
 window.onload = function () {
     'use strict';
 
@@ -134,7 +124,4 @@ window.onload = function () {
         localStorage.setItem("backColorTrans",color);
         window.location.href="time.html";
     });
-    
-
-    
  };

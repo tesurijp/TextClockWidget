@@ -3,16 +3,6 @@
 
 var fgColor, bgColor, backColorTrans;
 
-window.requestAnimationFrame = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-        'use strict';
-        window.setTimeout(callback, 1000 / 60);
-    };
-
 function calendar() {
     'use strict';
 
@@ -145,5 +135,5 @@ window.onload = function () {
         backColorTrans = "rgba(4,4,4,0.2)";
     }
 
-    window.requestAnimationFrame(calendar);
+    calendar();
 };
