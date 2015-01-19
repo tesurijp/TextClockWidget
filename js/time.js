@@ -116,7 +116,7 @@ function watch() {
             t11.css("color",fgColor);break;
     }
 
-    setTimeout(function () { watch();}, 60000);
+    setTimeout(function () { watch();}, 10000);
 }
 
 function loadColor(){
@@ -224,6 +224,5 @@ window.onload = function () {
     oclock = $(".oclock");
 
     loadColor();
-
-    window.requestAnimationFrame(watch);
+    watch();
 };
