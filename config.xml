@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.tesuri.org/TextClockWidget" version="2.1.0" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.tesuri.org/TextClockWidget" version="2.1.1" viewmodes="maximized">
     <tizen:application id="PfqcoDYvCt.TextClockWidget" package="PfqcoDYvCt" required_version="2.2"/>
     <author email="tesuri@tesuri.org">tesuri</author>
     <tizen:category name="com.samsung.wmanager.WATCH_CLOCK"/>

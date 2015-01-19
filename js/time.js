@@ -5,16 +5,6 @@ var five, ten, quarter, twenty, half,  to, past,
     t1, t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,
     am, pm, oclock,fgColor, bgColor, backColorTrans,alwaysOn;
 
-window.requestAnimationFrame = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-        'use strict';
-        window.setTimeout(callback, 1000);
-    };
-
 function watch() {
     'use strict';
 
@@ -22,7 +12,7 @@ function watch() {
     //noinspection JSUnusedAssignment
     var date = new Date(),
         hours = date.getHours(),
-        minutes = date.getMinutes(),
+        minutes = date.getMinutes();
 
     $(".timetable *").css("color",bgColor);
     $(".itis").css("color",fgColor);
@@ -125,6 +115,8 @@ function watch() {
         case 11:
             t11.css("color",fgColor);break;
     }
+
+    setTimeout(function () { watch();}, 60000);
 }
 
 function loadColor(){
@@ -171,7 +163,7 @@ window.onload = function () {
                 tizen.power.request("SCREEN", "SCREEN_DIM");
             } else  {
                 loadColor();
-                window.requestAnimationFrame(watch);
+                watch();
             }
         }
     }, false);   
@@ -190,14 +182,15 @@ window.onload = function () {
                     fgColor = '#FFF';
                     bgColor = '#000';
                     backColorTrans = 'rgba(0,0,0,1)';
+                    watch();
                     break;
                 case 'SCREEN_NORMAL':
                     loadColor();
-                    window.requestAnimationFrame(watch);
+                    watch();
                     break;
                 case 'SCREEN_BRIGHT':
                     loadColor();
-                    window.requestAnimationFrame(watch);
+                    watch();
                     break;
                 }
             } else {
