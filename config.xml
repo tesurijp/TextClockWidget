@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.tesuri.org/TextClockWidget" version="2.1.2" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.tesuri.org/TextClockWidget" version="2.2.0" viewmodes="maximized">
     <tizen:application id="PfqcoDYvCt.TextClockWidget" package="PfqcoDYvCt" required_version="2.2"/>
     <author email="tesuri@tesuri.org">tesuri</author>
     <tizen:category name="com.samsung.wmanager.WATCH_CLOCK"/>
     <content src="time.html"/>
-    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://developer.samsung.com/tizen/feature/wrist_up"/>
+    <feature name="http://tizen.org/feature/screen.size.normal.360.480"/>
+    <feature name="http://tizen.org/feature/sensor.gyroscope"/>
     <icon src="icon.png"/>
     <name>TextClockWidget</name>
     <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
     <tizen:privilege name="http://tizen.org/privilege/power"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/healthinfo"/>
     <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
 </widget>

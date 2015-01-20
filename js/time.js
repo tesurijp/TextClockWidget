@@ -3,7 +3,8 @@
 
 var five, ten, quarter, twenty, half,  to, past, 
     t1, t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,
-    am, pm, oclock,fgColor, bgColor, backColorTrans,alwaysOn;
+    am, pm, oclock,fgColor, bgColor, backColorTrans,alwaysOn,
+    state;
 
 function watch() {
     'use strict';
@@ -117,6 +118,24 @@ function watch() {
     }
 
     setTimeout(function () { watch();}, 10000);
+    
+    
+    if(state === 1){
+        state = 2;
+        setTimeout(function () {
+                fgColor = '#444';
+                bgColor = '#000';
+                backColorTrans = "rgba(0,0,0,1)";
+                watch();
+                state = 0;
+                var manager = webapis.motion;
+                manager.start("WRIST_UP", function() {
+                    loadColor();
+                    manager.stop("WRIST_UP")
+                })
+            }, 15000
+        )
+    }
 }
 
 function loadColor(){
@@ -134,6 +153,8 @@ function loadColor(){
     if(backColorTrans === null){
         backColorTrans = "rgba(4,4,4,0.2)";
     }
+    state = 1;
+    watch();
 }
 
 window.onload = function () {
@@ -145,24 +166,25 @@ window.onload = function () {
     });
 
     $(".contents").on('touchend', function() {
-        if(multiTouch){
-            window.location.href="settings.html";
-        } else {
-            window.location.href="date.html";
+        if(state !== 0){
+            if(multiTouch){
+                window.location.href="settings.html";
+            } else {
+                window.location.href="date.html";
+            }
         }
     });
     
     alwaysOn = localStorage.getItem("alwaysOn");
-    
+    if(alwaysOn ==='true'){
+        tizen.power.request("SCREEN", "SCREEN_NORMAL");
+    }
     document.addEventListener("visibilitychange", function() {
         if(alwaysOn === 'true'){
             if (document.hidden) {
-                fgColor = '#FFF';
-                bgColor = '#000';
-                backColorTrans = 'rgba(0,0,0,1)';
-                tizen.power.request("SCREEN", "SCREEN_DIM");
+                tizen.power.release("SCREEN");
             } else  {
-                loadColor();
+                tizen.power.request("SCREEN", "SCREEN_NORMAL");
                 watch();
             }
         }
@@ -174,27 +196,11 @@ window.onload = function () {
                 var currentDeviceMode = changedState;
                 switch(currentDeviceMode){
                 case 'SCREEN_OFF':
-                    fgColor = '#FFF';
-                    bgColor = '#000';
-                    backColorTrans = 'rgba(0,0,0,1)';
                     break;
-                case 'SCREEN_DIM':
-                    fgColor = '#FFF';
-                    bgColor = '#000';
-                    backColorTrans = 'rgba(0,0,0,1)';
-                    watch();
-                    break;
-                case 'SCREEN_NORMAL':
-                    loadColor();
-                    watch();
-                    break;
-                case 'SCREEN_BRIGHT':
-                    loadColor();
+                default:
                     watch();
                     break;
                 }
-            } else {
-                loadColor();                
             }
         }
     );
